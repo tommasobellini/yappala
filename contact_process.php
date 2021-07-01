@@ -1,37 +1,43 @@
 <?php
+if(isset( $_POST['name']))
+$name = $_POST['name'];
+if(isset( $_POST['email']))
+$email = $_POST['email'];
+if(isset( $_POST['number']))
+$number = $_POST['number'];
+if(isset( $_POST['jobname']))
+$jobname = $_POST['jobname'];
+if(isset( $_POST['message']))
+$message = $_POST['message'];
 
-    $to = "rockybd1995@gmail.com";
-    $from = $_REQUEST['email'];
-    $name = $_REQUEST['name'];
-    $subject = $_REQUEST['subject'];
-    $number = $_REQUEST['number'];
-    $cmessage = $_REQUEST['message'];
-
-    $headers = "From: $from";
-	$headers = "From: " . $from . "\r\n";
-	$headers .= "Reply-To: ". $from . "\r\n";
-	$headers .= "MIME-Version: 1.0\r\n";
-	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-    $subject = "You have a message from your Bitmap Photography.";
-
-    $logo = 'img/logo.png';
-    $link = '#';
-
-	$body = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Express Mail</title></head><body>";
-	$body .= "<table style='width: 100%;'>";
-	$body .= "<thead style='text-align: center;'><tr><td style='border:none;' colspan='2'>";
-	$body .= "<a href='{$link}'><img src='{$logo}' alt=''></a><br><br>";
-	$body .= "</td></tr></thead><tbody><tr>";
-	$body .= "<td style='border:none;'><strong>Name:</strong> {$name}</td>";
-	$body .= "<td style='border:none;'><strong>Email:</strong> {$from}</td>";
-	$body .= "</tr>";
-	$body .= "<tr><td style='border:none;'><strong>Subject:</strong> {$csubject}</td></tr>";
-	$body .= "<tr><td></td></tr>";
-	$body .= "<tr><td colspan='2' style='border:none;'>{$cmessage}</td></tr>";
-	$body .= "</tbody></table>";
-	$body .= "</body></html>";
-
-    $send = mail($to, $subject, $body, $headers);
-
+if ($name === ''){
+echo "Compila il nome.";
+die();
+}
+if ($jobname === ''){
+echo "Compila il nome attività.";
+die();
+}
+if ($email === ''){
+echo "Email non valida.";
+die();
+} else {
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+echo "Email non valida.";
+die();
+}
+}
+if ($message === ''){
+echo "Il messaggio non può essere vuoto.";
+die();
+}
+if ($number === ''){
+	$content="Da: $name \nEmail: $email \nNumero di telefono: $number \nMessaggio: $message";
+} else {
+	$content="From: $name \nNumero di telefono: '' \nEmail: $email \nMessage: $message";
+}
+$recipient = "bellinitom97@gmail.com";
+$mailheader = "From: $email \r\n";
+mail($recipient, "Richiesta informazioni", $content, $mailheader) or die("Errore invio email!");
+echo "Email inviata!";
 ?>

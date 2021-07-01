@@ -53,7 +53,7 @@
                                 <div class="menu-wrapper d-flex align-items-center justify-content-end">
                                     <!-- Header-btn -->
                                     <div class="header-right-btn d-none d-lg-block ml-20  rounded-pill">
-                                        <a href="contact.html" class="btn">Contattaci</a>
+                                        <a href="#contact-form-area" class="btn">Contattaci</a>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
         </div>
         <!-- Header End -->
     </header>
-    <main>
+    <main style="    overflow-x: hidden;">
         <!--? slider Area Start-->
         <div class="slider-area ">
             <div class="slider-active">
@@ -85,7 +85,9 @@
                                 </div>
                             </div>
                             <div class="col-lg-4  mt-5">
-                                <button name="submit" class="submit-btn">Voglio saperne di piu!</button>
+                                <div class="header-right-btn  rounded-pill">
+                                    <a href="#contact-form-area" class="btn">Voglio saperne di piu!</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -239,7 +241,9 @@
                     </div>
                     <!-- Section Tittle -->
                     <div class="col-lg-4">
-                        <button name="submit" class="submit-btn">Desidero iniziare ora</button>
+                        <div class="header-right-btn rounded-pill">
+                            <a href="#contact-form-area" class="btn">Desidero iniziare ora</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -303,7 +307,7 @@
             </div>
         </div>
         <!--? contact-form start -->
-        <section class="contact-form-area section-bg pt-115 pb-120 fix " style="  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('assets/img/gallery/06_Aderire.jpg'); background-size: cover; background-repeat: no-repeat;">
+        <section id="contact-form-area" class="contact-form-area section-bg pt-115 pb-120 fix " style="  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('assets/img/gallery/06_Aderire.jpg'); background-size: cover; background-repeat: no-repeat;">
             <div class=" container ">
                 <div class="row justify-content-start ">
                     <!-- Contact wrapper -->
@@ -320,31 +324,31 @@
                                 </div>
                             </div>
                             <!-- form -->
-                            <form action="# " class="contact-form ">
+                            <form method="post" action="contact_process.php" id="contact-form" class="contact-form" role="form">
                                 <div class="row ">
                                     <div class="col-lg-12 ">
                                         <div class="input-form ">
-                                            <input type="text " placeholder="Nome * ">
+                                            <input type="text" id="name" name="name" placeholder="Nome * ">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 ">
                                         <div class="input-form ">
-                                            <input type="text " placeholder="E-mail * ">
+                                            <input type="text" id="email" name="email" placeholder="E-mail * ">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 ">
                                         <div class="input-form ">
-                                            <input type="text " placeholder="Numero di telefono ">
+                                            <input type="text" id="number" name="number" placeholder="Numero di telefono ">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 ">
                                         <div class="input-form ">
-                                            <input type="text " placeholder="Nome attività * ">
+                                            <input type="text" id="jobname" name="jobname" placeholder="Nome attività * ">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 ">
                                         <div class="input-form ">
-                                            <textarea style="padding: 9px 33px 9px 32px; " class="form-control " id="exampleFormControlTextarea1 " placeholder="Messaggio * " rows="3 "></textarea>
+                                            <textarea style="padding: 9px 33px 9px 32px; " id="message"  class="form-control " name="message" id="exampleFormControlTextarea1 " placeholder="Messaggio * " rows="3 "></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 ">
@@ -358,8 +362,9 @@
                                     <!-- Button -->
                                     <br>
                                     <div class="col-4 mt-2 align-items-center ">
-                                        <button name="submit" class="submit-btn">Invia!</button>
+                                        <button type="submit" class="submit-btn" onclick="validateForm();">Invia!</button>
                                     </div>
+                                    <div class="status"></div>
                                 </div>
                             </form>
                         </div>
@@ -394,7 +399,7 @@
                                     </div>
                                     <div class="col-6">
                                         <p class="f-right " style='color: #ff5f13;'>Vuoi lavorare con noi?</p><br>
-                                        <p class="f-right ">Inviaci la tua candidatura a <a href="mailto:info@yappala.com " style='color: #000;'>info@yappala.com</a></p>
+                                        <p class="f-right ">Inviaci la tua candidatura a <a href="mailto:info@yappala.com" class="mailto">info@yappala.com</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -432,6 +437,37 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js "></script>
     <script>
         AOS.init();
+    </script>
+    <script>
+        function validateForm() {
+            var name =  document.getElementById('name').value;
+            if (name == "") {
+                document.querySelector('.status').innerHTML = "Compila il campo nome";
+                return false;
+            }
+            var jobname =  document.getElementById('jobname').value;
+            if (jobname == "") {
+                document.querySelector('.status').innerHTML = "Compila il campo nome attività";
+                return false;
+            }
+            var email =  document.getElementById('email').value;
+            if (email == "") {
+                document.querySelector('.status').innerHTML = "Compila il campo email";
+                return false;
+            } else {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if(!re.test(email)){
+                    document.querySelector('.status').innerHTML = "Email non valida";
+                    return false;
+                }
+            }
+            var message =  document.getElementById('message').value;
+            if (message == "") {
+                document.querySelector('.status').innerHTML = "Aggiungi un messaggio";
+                return false;
+            }
+            document.querySelector('.status').innerHTML = "Inviando..";
+            }
     </script>
 
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js "></script>
