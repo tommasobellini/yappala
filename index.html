@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Yappala | Clienti felici e contenti</title>
     <meta name="description" content="La soluzione per ampliare la tua clientela e accrescere i tuoi guadagni.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/loder.jpg">
 
@@ -319,8 +319,7 @@
                                     <!-- Section Tittle -->
                                     <div class="mb-40 ">
                                         <h2 style='color: #ff5f13;'>VUOI ADERIRE A YAPPALA?</h2>
-                                        <p>Hai un negozio o un’attività e ti piacerebbe conoscere tutti i vantaggi di Yappala?
-                                             Mandaci una mail a <a href="mailto:info@yappala.com" style="color:#ff5f13;">info@yappala.com</a>
+                                        <p>Hai un negozio o un’attività e ti piacerebbe conoscere tutti i vantaggi di Yappala? Mandaci una mail a <a href="mailto:info@yappala.com" style="color:#ff5f13;">info@yappala.com</a>
                                         </p>
                                     </div>
                                 </div>
@@ -416,10 +415,10 @@
                                 <p>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     <div class="col-12">
-                                        Copyright 2019-2021
+                                        <span>Copyright 2019-2021</span>
                                     </div>
                                     <div class="col-12">
-                                        BGEK Srl  -  P.I. 10330960963
+                                        <span>BGEK Srl - P.I. 10330960963</span>
                                     </div>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </p>
@@ -443,34 +442,34 @@
     </script>
     <script>
         function validateForm() {
-            var name =  document.getElementById('name').value;
+            var name = document.getElementById('name').value;
             if (name == "") {
                 document.querySelector('.status').innerHTML = "Compila il campo nome";
                 return false;
             }
-            var jobname =  document.getElementById('jobname').value;
+            var jobname = document.getElementById('jobname').value;
             if (jobname == "") {
                 document.querySelector('.status').innerHTML = "Compila il campo nome attività";
                 return false;
             }
-            var email =  document.getElementById('email').value;
+            var email = document.getElementById('email').value;
             if (email == "") {
                 document.querySelector('.status').innerHTML = "Compila il campo email";
                 return false;
             } else {
                 var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                if(!re.test(email)){
+                if (!re.test(email)) {
                     document.querySelector('.status').innerHTML = "Email non valida";
                     return false;
                 }
             }
-            var message =  document.getElementById('message').value;
+            var message = document.getElementById('message').value;
             if (message == "") {
                 document.querySelector('.status').innerHTML = "Aggiungi un messaggio";
                 return false;
             }
             document.querySelector('.status').innerHTML = "Inviando..";
-            }
+        }
     </script>
 
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js "></script>
